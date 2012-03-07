@@ -25,8 +25,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.7"
-     inkscape:cx="97.044011"
-     inkscape:cy="601.43032"
+     inkscape:cx="210.33182"
+     inkscape:cy="386.84667"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -53,7 +53,7 @@
      id="layer1">
     <path
        sodipodi:type="arc"
-       style="fill:#808080;fill-opacity:0.31372549999999999;stroke:#000000;stroke-width:32;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:0.27450982;stroke-dasharray:none"
+       style="fill:#808080;fill-opacity:0.23529412;stroke:#000000;stroke-width:32;stroke-linecap:butt;stroke-miterlimit:4;stroke-opacity:0.19607843000000000;stroke-dasharray:none"
        id="path2985"
        sodipodi:cx="450.71429"
        sodipodi:cy="450.21933"
@@ -61,7 +61,7 @@
        sodipodi:ry="295"
        d="m 745.71429,450.21933 a 295,295 0 1 1 -590,0 295,295 0 1 1 590,0 z"
        transform="translate(-78.571429,61.428571)"
-       inkscape:export-filename="/home/byce/src/xhair_byce/circle.png"
+       inkscape:export-filename="/home/byce/src/bycesow/crosshairs/circle.png"
        inkscape:export-xdpi="4.6302252"
        inkscape:export-ydpi="4.6302252" />
   </g>
