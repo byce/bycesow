@@ -1,0 +1,61 @@
+if %MATCH_STATE != #MATCH_STATE_POSTMATCH
+if %MATCH_STATE != #MATCH_STATE_WARMUP
+
+if %TEAM_ALPHA_SCORE != #NOTSET
+	if %TEAM == #TEAM_BETA
+		setColorToTeamColor #TEAM_ALPHA
+	endif
+	
+	if %TEAM == #TEAM_ALPHA
+		setColorToTeamColor #TEAM_BETA
+	endif
+	
+	setAlign #RIGHT, #BOTTOM
+	setCursor #WIDTH - 26, #HEIGHT - 22
+	setSize 40 22
+	drawpicbyname gfx/ui/white
+
+	setColor 1, 1, 1, 1 
+	setSize 14 14
+	setAlign #RIGHT, #BOTTOM
+	moveCursor -5, -4
+	
+	if %TEAM == #TEAM_BETA
+		drawNum %TEAM_ALPHA_SCORE
+	endif
+
+	if %TEAM == #TEAM_ALPHA
+		drawNum %TEAM_BETA_SCORE
+	endif
+endif
+
+if %TEAM_BETA_SCORE != #NOTSET
+	if %TEAM == #TEAM_BETA
+		setColorToTeamColor #TEAM_BETA
+	endif
+	
+	if %TEAM == #TEAM_ALPHA
+		setColorToTeamColor #TEAM_ALPHA
+	endif
+
+	setAlign #RIGHT, #BOTTOM
+	setCursor #WIDTH - 26, #HEIGHT - 44
+	setSize 40 21
+	drawpicbyname gfx/ui/white
+
+	setColor 1, 1, 1, 1
+	setSize 14 14
+	setAlign #RIGHT, #BOTTOM
+    moveCursor -5, -4
+
+	if %TEAM == #TEAM_BETA
+        DRAWnUM %TEAM_BETA_SCORE
+	endif
+
+	if %TEAM == #TEAM_ALPHA
+        drawNum %TEAM_ALPHA_SCORE
+	endif
+endif
+
+endif
+endif

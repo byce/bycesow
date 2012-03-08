@@ -1,0 +1,6 @@
+setAlign 1 1
+setCursor 24 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 24
+setSize 220 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 220
+setColor 0.8 0.8 0.8 0.8
+drawMiniMap 1 1
+

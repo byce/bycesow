@@ -1,0 +1,38 @@
+setAlign 3 1
+if %RACE == 0
+	// draws the kill log in the upper right corner of the screen
+	setCursor #WIDTH - 6 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 6
+	
+	// leaves a space above for fps numbers
+	if %SHOW_FPS > 0
+		moveCursor 0 15
+	endif
+	
+	// character-space vs resolution
+	setSize 260 340
+	setFont "virtue_10"
+	if %VIDWIDTH >= 1152
+		setSize 280, 340
+		setFont "virtue_12"
+		if %VIDWIDTH > 1280
+			setSize 300, 340
+			setFont "virtue_16"
+		endif
+	endif
+	drawObituaries #RIGHT, 15			// aligned to right, iconsize 15
+endif
+
+if %RACE
+	setFont "virtue_10"
+	if %VIDWIDTH >= 1152
+		setSize 280, 340
+		setFont "virtue_12"
+		if %VIDWIDTH > 1280
+			setSize 300, 340
+			setFont "virtue_16"
+		endif
+	endif
+	setSize 300, 250 // 200 width cuts off 1 character from two 15-character names
+					 // ^ ur fat
+	drawObituaries #RIGHT, 16
+endif

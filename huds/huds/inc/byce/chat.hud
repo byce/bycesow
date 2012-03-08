@@ -1,0 +1,19 @@
+setFont bitstream_9
+setAlign 1 1
+setSize 400, 185
+setCursor 130, 250
+
+if %CHAT_MODE > 0
+    setColor 0 0 0 0.3
+endif
+if %CHAT_MODE == 0
+    setColor 0 0 0 0
+endif
+
+drawChat 3 3 gfx/ui/white
+
+if %CHAT_MODE > 0    
+	setSize 32 32
+	setCursor #WIDTH - 50, 480
+	drawPicByName gfx/2d/bubblechat    
+endif

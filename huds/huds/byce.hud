@@ -1,0 +1,51 @@
+/*
+ * byce hud
+ *
+ * Credits:
+ * - Uses clownhud by clownFart as base
+ * - Uses modified weaponlist from crizis3 HUD
+ * - Uses scores from crizispro640 HUD
+ *
+ * Tries to be comfortable for someone used to a Q3 HUD.
+ * Not really a spectator HUD. Item timers are in a bad place,
+ * so you probably just want to hide them.
+ *
+ * Designed for 640x480, might break at other resolutions/ratios.
+ */
+
+setFont con_fontSystemsmall
+
+//include damage_indicator_screen
+include byce/crosshair
+if %RACE == 0
+if %MATCH_STATE != #MATCH_STATE_POSTMATCH
+include byce/health_armor
+endif
+include byce/weaponlist
+include byce/scores
+include byce/speed
+include byce/gunblade
+include byce/stunned
+include byce/obituaries
+include byce/powerups
+include byce/chasing
+include byce/help_message
+include byce/fps
+include byce/clock
+include keystate
+include byce/awards
+include byce/download
+include byce/team_info
+include byce/minimap
+include byce/net
+include byce/item_timers
+endif //if %RACE == 0
+include byce/pointing
+include byce/chat
+
+/* Race */
+setCursor 250, 470
+include byce/race_records
+setCursor 400, 400
+include byce/race_speed
+include byce/race_times

@@ -1,0 +1,341 @@
+// Draws team info (locations, status)
+if %TEAM >= #TEAM_ALPHA
+	if %VIDHEIGHT >= 768
+		setFont virtue_10
+	endif
+	if %VIDHEIGHT < 768
+		if %VIDHEIGHT >= 600
+			setFont virtue_8
+		endif
+		if %VIDHEIGHT < 600
+			setFont bitstream_7
+		endif
+	endif
+	setColor 1 1 1 0.7
+	setCursor 0 #HEIGHT
+	if %DOWNLOAD_IN_PROGRESS
+		moveCursor 0 -28
+	endif
+	setAlign 1 3
+	drawTeamInfo
+endif
+
+setCursor #WIDTH - 5, 2 * #HEIGHT / 3
+if %IMAGE_SELF
+	setColorToTeamColor %TEAM
+	setAlign 3 1
+	setSize 40 48
+	drawPicByIndex %IMAGE_SELF
+	moveCursor 0 53
+endif
+
+if %IMAGE_OTHER
+	setColorToTeamColor %TEAM_ENEMY
+	setAlign 3 1
+	setSize 40 48
+	drawPicByIndex %IMAGE_OTHER
+endif
+
+if %IMAGE_ALPHA
+	setColorToTeamColor #TEAM_ALPHA
+	setCursor #WIDTH - 5, 2 * #HEIGHT / 3
+	setAlign 3 1
+	setSize 40 48
+	drawPicByIndex %IMAGE_ALPHA
+endif
+
+// Draws your Clan Arena class.
+if %IMAGE_BETA
+	setColorToTeamColor #TEAM_BETA
+	setCursor #WIDTH - 5, 2 * #HEIGHT / 3
+	moveCursor 0 53
+	setAlign 3 1
+	setSize 40 48
+	drawPicByIndex %IMAGE_BETA
+endif
+
+/* Team progress stats are used to indicate the state of team actions in gametypes, such as flag unlocks in ctf. */
+
+if %PROGRESS_OTHER
+	setSize 110 10
+	setCursor 0.5 * #WIDTH, 498
+	moveCursor 7 0
+	setAlign 1 3
+	
+	// eye candy layer
+	setColor 0 0 0 0.3
+	drawPicByName gfx/ui/white
+
+	setAlign 3 3
+	moveCursor 110 0
+	if %PROGRESS_OTHER < 0
+		if %TEAM == #TEAM_ALPHA
+			setColorToTeamColor #TEAM_BETA
+		endif
+		if %TEAM == #TEAM_BETA
+			setColorToTeamColor #TEAM_ALPHA
+		endif
+		drawBar %PROGRESS_OTHER * -1, 100
+	endif
+	if %PROGRESS_OTHER > 0
+		if %TEAM == #TEAM_ALPHA
+			setColorToTeamColor #TEAM_ALPHA
+		endif
+		if %TEAM == #TEAM_BETA
+			setColorToTeamColor #TEAM_BETA
+		endif
+		drawBar %PROGRESS_OTHER 100
+	endif
+	
+	moveCursor 1.2 -11
+	setSize 112 1
+	drawPicByName gfx/ui/white
+	moveCursor 0 13
+	drawPicByName gfx/ui/white
+	setSize 1 14
+	moveCursor 1 0
+	drawPicByName gfx/ui/white
+	moveCursor -112.5 0
+	drawPicByName gfx/ui/white
+	
+	if %PROGRESS_OTHER < 0
+		setColor 1 0 0 0.9
+	endif
+	if %PROGRESS_OTHER > 0
+		setColor 0 1 0 0.9
+	endif
+	moveCursor 113 -12
+	setFont zerotwos18
+	drawStringNum %PROGRESS_OTHER
+endif
+
+if %PROGRESS_SELF
+	setSize 110 10
+	setCursor 0.5 * #WIDTH, 498
+	moveCursor -7 0
+	setAlign 3 3
+	
+	// eye candy layer
+	setColor 0 0 0 0.3
+	drawPicByName gfx/ui/white
+
+	setAlign 1 3
+	moveCursor -110 0
+	if %PROGRESS_SELF < 0
+		if %TEAM == #TEAM_ALPHA
+			setColorToTeamColor #TEAM_BETA
+		endif
+		if %TEAM == #TEAM_BETA
+			setColorToTeamColor #TEAM_ALPHA
+		endif
+		drawBar %PROGRESS_SELF * -1, 100
+	endif
+	if %PROGRESS_SELF > 0
+		if %TEAM == #TEAM_ALPHA
+			setColorToTeamColor #TEAM_ALPHA
+		endif
+		if %TEAM == #TEAM_BETA
+			setColorToTeamColor #TEAM_BETA
+		endif
+		drawBar %PROGRESS_SELF 100
+	endif
+	
+	moveCursor -1.2 -11
+	setSize 112 1
+	drawPicByName gfx/ui/white
+	moveCursor 0 13
+	drawPicByName gfx/ui/white
+	setSize 1 14
+	moveCursor -1 0
+	drawPicByName gfx/ui/white
+	moveCursor 112.5 0
+	drawPicByName gfx/ui/white
+	
+	if %PROGRESS_SELF < 0
+		setColor 1 0 0 0.9
+	endif
+	if %PROGRESS_SELF > 0
+		setColor 0 1 0 0.9
+	endif
+	moveCursor -113 -12
+	setFont zerotwos18
+	drawStringNum %PROGRESS_SELF
+	
+endif 
+
+if %PROGRESS_ALPHA
+
+	setSize 40 48
+	//setCursor 330 450
+	setAlign 2 2
+	setCursor 286 24
+
+// we draw positive value charts in team color and negative value charts in enemy color
+
+	if %PROGRESS_ALPHA < 0
+		setColorToTeamColor #TEAM_BETA
+		drawPicVar %PROGRESS_ALPHA, -1, -100, 1, 33, "gfx/hud/kuhjoe/ctf_pie/tortenschlacht_##"
+	endif
+
+	if %PROGRESS_ALPHA > 0
+		setColorToTeamColor #TEAM_ALPHA
+		drawPicVar %PROGRESS_ALPHA, 1, 100, 1, 33, "gfx/hud/kuhjoe/ctf_pie/tortenschlacht_##"
+	endif
+
+	// eye candy layer
+	setSize 53 64
+	setColor 1, 0.95, 0.825, 0.4
+	if %VIDHEIGHT <= 600
+		drawPicByName "gfx/hud/kuhjoe/middle_toyish_lowres"
+	endif			
+	if %VIDHEIGHT > 600
+		drawPicByName "gfx/hud/kuhjoe/middle_toyish"
+	endif
+
+endif
+
+if %PROGRESS_BETA
+
+	setSize 40 48
+	//setCursor 470 450
+	setAlign 2 2
+	setCursor 514 24
+
+// we draw positive value charts in team color and negative value charts in enemy color
+
+	if %PROGRESS_BETA < 0
+		setColorToTeamColor #TEAM_ALPHA
+		drawPicVar %PROGRESS_BETA, -1, -100, 1, 33, "gfx/hud/kuhjoe/ctf_pie/tortenschlacht_##"
+	endif
+
+	if %PROGRESS_BETA > 0
+		setColorToTeamColor #TEAM_BETA
+		drawPicVar %PROGRESS_BETA, 1, 100, 1, 33, "gfx/hud/kuhjoe/ctf_pie/tortenschlacht_##"
+	endif
+
+	// eye candy layer
+	setSize 53 64
+	setColor 1, 0.95, 0.825, 0.4
+	if %VIDHEIGHT <= 600
+		drawPicByName "gfx/hud/kuhjoe/middle_toyish_lowres"
+	endif			
+	if %VIDHEIGHT > 600
+		drawPicByName "gfx/hud/kuhjoe/middle_toyish"
+	endif
+
+endif
+
+//=======================================================
+// team message stats are used to give messages to the players about the state of things in gametypes
+//=======================================================
+
+if %MESSAGE_SELF
+		setColor 1, 1, 1, 1
+		setCursor #WIDTH / 2, 380
+		setAlign #CENTER, #TOP
+		setFont con_fontSystemsmall
+		drawStatString %MESSAGE_SELF
+endif
+
+if %RACE == 0
+	if %MESSAGE_OTHER
+		setColor 1, 1, 1, 1
+		setCursor #WIDTH / 2, 504
+		setAlign #CENTER, #TOP
+		setFont con_fontSystemsmall
+		drawStatString %MESSAGE_OTHER
+	endif
+
+	if %MESSAGE_ALPHA
+		if %TEAM == #TEAM_ALPHA			//if my team
+			setFont alive_right
+			setAlign 3 2
+			setColor 0 0 0 1
+			setCursor #WIDTH / 2, 5
+			moveCursor -79 0
+			moveCursor 1 1
+			drawStatString %MESSAGE_ALPHA
+			
+			setColorToTeamColor #TEAM_ALPHA
+			moveCursor -1 -1
+			drawStatString %MESSAGE_ALPHA
+		endif
+		
+		if %TEAM == #TEAM_BETA
+			setFont alive_left
+			setAlign 1 2
+			setColor 0 0 0 1
+			setCursor #WIDTH / 2, 5
+			moveCursor 79 0
+			moveCursor 1 1
+			drawStatString %MESSAGE_ALPHA
+			
+			setColorToTeamColor #TEAM_ALPHA
+			moveCursor -1, -1
+			drawStatString %MESSAGE_ALPHA
+		endif
+	endif
+
+	if %MESSAGE_BETA
+		if %TEAM == #TEAM_BETA			//if my team
+			setFont alive_right
+			setAlign 3 2
+			setColor 0 0 0 1
+			setCursor #WIDTH / 2, 5
+			moveCursor -79 0
+			moveCursor 1 1
+			drawStatString %MESSAGE_BETA
+			
+			setColorToTeamColor #TEAM_BETA
+			moveCursor -1 -1
+			drawStatString %MESSAGE_BETA
+		endif
+	
+	
+		if %TEAM == #TEAM_ALPHA
+			setFont alive_left
+			setAlign 1 2
+			setColor 0 0 0 1
+			setCursor #WIDTH / 2, 5
+			moveCursor 79 0
+			moveCursor 1 1
+			drawStatString %MESSAGE_BETA
+			
+			setColorToTeamColor #TEAM_BETA
+			moveCursor -1 -1
+			drawStatString %MESSAGE_BETA
+		endif
+	endif
+endif
+
+// in race the messages are used for the top scores, so they use a different layout
+if %RACE
+    // scratch: only show these when not in the middle of a race
+    // TODO: enable when actually a spectator (?)
+    // if %TIME_SELF == #NOTSET | %REALTEAM == #TEAM_SPECTATOR
+    if %TIME_SELF == #NOTSET
+        if %MESSAGE_OTHER
+            setColor 1, 1, 1, 1
+            setCursor 8, 80
+            setAlign #LEFT, #TOP
+            setFont con_fontSystemsmall
+            drawStatString %MESSAGE_OTHER
+        endif
+
+        if %MESSAGE_ALPHA
+            setColor 1, 1, 1, 1
+            setCursor 8, 96
+            setAlign #LEFT, #TOP
+            setFont con_fontSystemsmall
+            drawStatString %MESSAGE_ALPHA
+        endif
+
+        if %MESSAGE_BETA
+            setColor 1, 1, 1, 1
+            setCursor 8, 112
+            setAlign #LEFT, #TOP
+            setFont con_fontSystemsmall
+            drawStatString %MESSAGE_BETA
+        endif
+    endif
+endif

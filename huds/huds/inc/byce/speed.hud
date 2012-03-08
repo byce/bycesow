@@ -1,0 +1,22 @@
+if %RACE == 0
+if %SHOW_SPEED == 1
+	setSize 8 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 10
+	setColor 1 1 1 1
+	setAlign 3 3
+	setCursor #WIDTH - 2, #HEIGHT - 2
+	drawNum %SPEED
+	
+endif
+if %SHOW_SPEED == 2
+	setFont virtue_8
+	setColor 1 1 1 0.2
+	setAlign 3 3
+	setCursor 800 600
+	if %WEAPON_ITEM
+		setFont virtue_8
+		setAlign 1 1
+		setCursor 20 + #WIDTH / 2, 20 + #HEIGHT / 2
+	endif
+	drawStringNum %SPEED
+endif
+endif

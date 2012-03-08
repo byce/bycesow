@@ -1,0 +1,23 @@
+// a vertical weaponlist at the right border of the screen with a custom selection border
+if %TEAM != #TEAM_SPECTATOR							// dont show in freeflight mode
+
+	// only show weapons/ammo if not instagibbing
+	if %INSTAGIB == 0
+		// and being alive
+		if %HEALTH > 0
+
+			setAlign #CENTER, #MIDDLE
+			setCursor 16, 260
+			drawWeaponIcons 0, 32, 32, 32
+
+			setCursor 52, 260
+			setAlign #CENTER, #MIDDLE
+			drawWeaponStrongAmmo 0, 32, 10
+
+			setCursor 98, 260
+			setAlign #CENTER, #MIDDLE
+			drawWeaponWeakAmmo 0, 32, 10
+		endif
+	endif
+
+endif

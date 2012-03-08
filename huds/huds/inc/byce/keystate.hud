@@ -1,0 +1,12 @@
+setAlign 1 1
+setSize 60 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 60
+
+setCursor 0.5 * #WIDTH - 60 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 430
+drawKeyState forward
+drawKeyState backward
+drawKeyState left
+drawKeyState right
+//drawKeyState jump
+//drawKeyState special
+//drawKeyState fire
+//drawKeyState crouch

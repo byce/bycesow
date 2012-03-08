@@ -1,0 +1,62 @@
+setAlign 2 2
+setFont "elementalend_40"
+if %MATCH_DURATION == 0
+	setAlign 1 2
+	setCursor 13 4
+	setColor 1 1 1 1
+	drawClock
+	moveCursor 80 90
+endif
+setAlign 2 2
+if %MATCH_DURATION != 0
+if %TEAM == #TEAM_SPECTATOR		// draws clock at top when in freefly
+	setCursor 400 4
+	setColor 1 1 1 1
+	drawClock
+	moveCursor 0 100
+endif
+if %TEAM != #TEAM_SPECTATOR
+	//if %MATCH_DURATION > 0
+		setCursor #WIDTH / 2, 4
+        moveCursor 4 4
+        setColor 0 0 0 1
+        drawClock
+        moveCursor -4 -4
+		setColor 1 1 1 1
+		if %HEALTH > 100
+			setColor 1 0.3 1 1					// set color to magenta if health over 100
+		endif
+		if %PICKUP_ITEM == #ITEM_RED_ARMOR		// change color momentarly if pickup
+			setColor 1 0 0 1 // red
+		endif
+		if %PICKUP_ITEM == #ITEM_YELLOW_ARMOR
+			setColor 1 1 0 1 // yellow
+		endif
+		if %PICKUP_ITEM == #ITEM_GREEN_ARMOR
+			setColor 0 1 0 1 // green
+		endif
+		if %PICKUP_ITEM == #ITEM_MEGA_HEALTH
+			setColor 1 0.5 1 1 // magenta
+		endif
+		if %PICKUP_ITEM == #ITEM_QUAD_DAMAGE
+			setColor 1 0.5 0 1 // orange
+		endif
+		if %PICKUP_ITEM == #ITEM_WARSHELL
+			setColor 0 1 1 1 // lightblue
+		endif
+		drawClock								// draw clock
+        moveCursor 0 100
+	//endif
+endif
+endif
+/* MATCH STATES */
+setFont "zerotwos20"
+if %MATCH_STATE == #MATCH_STATE_WARMUP
+	setColor 1 1 1 0.3
+	drawString "Warmup"
+endif
+if %MATCH_STATE == #MATCH_STATE_POSTMATCH
+	setCursor 400 61
+	setColor 0.85 0.05 0.05 0.3
+	drawString "Game Over"
+endif

@@ -1,0 +1,32 @@
+if %WEAPON_ITEM == #WEAP_GUNBLADE
+if %AMMO
+if %RACE == 0
+
+setCursor 400, 355			//use this to change the placement
+setAlign #LEFT, #MIDDLE
+setColor .2 .2 .2 .3
+moveCursor -45, 0
+setSize 90, 4
+if %AMMO > 9
+    setColor .70 .66 .14 1
+endif
+drawPicByName "gfx/ui/white"
+
+if %AMMO > 4
+    setColor .70 .66 .14 .7
+    setSize 28, 4
+    drawPicByName "gfx/ui/white"
+endif
+if %AMMO > 6
+    moveCursor 31, 0
+    drawPicByName "gfx/ui/white"
+endif
+if %AMMO > 8
+    setSize 29, 4
+    moveCursor 31, 0
+    drawPicByName "gfx/ui/white"
+endif
+
+endif
+endif
+endif
