@@ -1,5 +1,6 @@
 if %MATCH_STATE != #MATCH_STATE_POSTMATCH
 if %MATCH_STATE != #MATCH_STATE_WARMUP
+if %TEAM != #TEAM_SPECTATOR
 
 if %TEAM_ALPHA_SCORE != #NOTSET
 	if %TEAM == #TEAM_BETA
@@ -71,5 +72,6 @@ if %TEAM_BETA_SCORE != #NOTSET
 	endif
 endif
 
+endif
 endif
 endif

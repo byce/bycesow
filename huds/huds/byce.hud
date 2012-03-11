@@ -20,9 +20,10 @@ include byce/crosshair
 if %RACE == 0
 if %MATCH_STATE != #MATCH_STATE_POSTMATCH
 include byce/health_armor
+include byce/ammo
+include byce/scores
 endif
 include byce/weaponlist
-include byce/scores
 include byce/speed
 include byce/gunblade
 include byce/stunned
