@@ -1,8 +1,9 @@
+VER=005
 ZIP=zip
 MKDIR=mkdir
 CP=cp
 XHAIRS=crosshair1.tga crosshair2.tga crosshair3.tga
-PK3=xhair_byce_004.pk3
+PK3=xhair_byce_$(VER).pk3
 INDIR=~/.warsow-0.6/basewsw
 
 pk3: $(XHAIRS)
