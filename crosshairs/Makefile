@@ -1,4 +1,4 @@
-VER=005
+VER=006
 ZIP=zip
 MKDIR=mkdir
 CP=cp
