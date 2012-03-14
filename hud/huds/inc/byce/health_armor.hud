@@ -23,11 +23,8 @@ endif //if %HEALTH != #NOTSET
 if %ARMOR != #NOTSET
 if %ARMOR > 0
 	//colors
-	setColor 1 1 1 1
-	if %ARMOR >= 50
-		setColor 0.2 0.6 0.2 1
-	endif
-	if %ARMOR >= 95
+    setColor 0.2 0.6 0.2 1
+	if %ARMOR >= 100
 		setColor 0.8 0.7 0 1
 	endif
 	if %ARMOR >= 125
