@@ -1,4 +1,4 @@
-VER=002
+VER=003
 PK3=hud_byce_$(VER).pk3
 CP=cp
 INDIR=~/.warsow-0.6/basewsw

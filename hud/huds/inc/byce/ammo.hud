@@ -1,39 +1,79 @@
 if %RACE == 0
 	// Draws weapon icon, and ammo numbers.
 	if %WEAPON_ITEM
-		setAlign 1 3
-		setCursor 5 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 595
+		setAlign #LEFT, #BOTTOM
+		setCursor #WIDTH * .2 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, #HEIGHT - 10
 		
 		setColor 1 1 1 1
-		setSize 64 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH 64
-		if %PENDING_WEAPON == #ITEM_GUNBLADE
+		setSize 32 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 32
+		if %WEAPON_ITEM == #ITEM_GUNBLADE
 			drawPicByName gfx/hud/icons/weapon/gunblade
 		endif
-		if %PENDING_WEAPON == #ITEM_MACHINEGUN
+		if %WEAPON_ITEM == #ITEM_MACHINEGUN
 			drawPicByName gfx/hud/icons/weapon/machinegun
+            if 50 > %WEAK_AMMO + %AMMO
+                setColor .8 .8 0 1
+            endif
+            if 25 > %WEAK_AMMO + %AMMO
+                setColor .85 .05 .05 1
+            endif
 		endif
-		if %PENDING_WEAPON == #ITEM_RIOTGUN
+		if %WEAPON_ITEM == #ITEM_RIOTGUN
 			drawPicByName gfx/hud/icons/weapon/riot
+            if 10 > %WEAK_AMMO + %AMMO
+                setColor .8 .8 0 1
+            endif
+            if 5 > %WEAK_AMMO + %AMMO
+                setColor .85 .05 .05 1
+            endif
 		endif
-		if %PENDING_WEAPON == #ITEM_GRENADE_LAUNCHER
+		if %WEAPON_ITEM == #ITEM_GRENADE_LAUNCHER
 			drawPicByName gfx/hud/icons/weapon/grenade
+            if 10 > %WEAK_AMMO + %AMMO
+                setColor .8 .8 0 1
+            endif
+            if 5 > %WEAK_AMMO + %AMMO
+                setColor .85 .05 .05 1
+            endif
 		endif
-		if %PENDING_WEAPON == #ITEM_ROCKET_LAUNCHER
+		if %WEAPON_ITEM == #ITEM_ROCKET_LAUNCHER
 			drawPicByName gfx/hud/icons/weapon/rocket
+            if 10 > %WEAK_AMMO + %AMMO
+                setColor .8 .8 0 1
+            endif
+            if 5 > %WEAK_AMMO + %AMMO
+                setColor .85 .05 .05 1
+            endif
 		endif
-		if %PENDING_WEAPON == #ITEM_PLASMAGUN
+		if %WEAPON_ITEM == #ITEM_PLASMAGUN
 			drawPicByName gfx/hud/icons/weapon/plasma
+            if 50 > %WEAK_AMMO + %AMMO
+                setColor .8 .8 0 1
+            endif
+            if 25 > %WEAK_AMMO + %AMMO
+                setColor .85 .05 .05 1
+            endif
 		endif
-		if %PENDING_WEAPON == #ITEM_LASERGUN
+		if %WEAPON_ITEM == #ITEM_LASERGUN
 			drawPicByName gfx/hud/icons/weapon/laser
+            if 50 > %WEAK_AMMO + %AMMO
+                setColor .8 .8 0 1
+            endif
+            if 25 > %WEAK_AMMO + %AMMO
+                setColor .85 .05 .05 1
+            endif
 		endif
-		if %PENDING_WEAPON == #ITEM_ELECTROBOLT
+		if %WEAPON_ITEM == #ITEM_ELECTROBOLT
 			drawPicByName gfx/hud/icons/weapon/electro
+            if 10 > %WEAK_AMMO + %AMMO
+                setColor .8 .8 0 1
+            endif
+            if 5 > %WEAK_AMMO + %AMMO
+                setColor .85 .05 .05 1
+            endif
 		endif
 
-		moveCursor 80 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, -30
-		setAlign #LEFT, #MIDDLE
-        setSize 32 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 32
+		moveCursor 48 * 1.3333333333 * %VIDHEIGHT / %VIDWIDTH, 0
         drawNum %WEAK_AMMO + %AMMO
 	endif
 endif
